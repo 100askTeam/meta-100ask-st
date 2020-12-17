@@ -16,7 +16,6 @@ IMAGE_FEATURES += "\
     ssh-server-dropbear \
     hwcodecs            \
     tools-profile       \
-    eclipse-debug       \
     "
 
 #
@@ -33,12 +32,9 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     \
     packagegroup-framework-core-extra   \
     \
-    ${@bb.utils.contains('COMBINED_FEATURES', 'optee', 'packagegroup-optee-core', '', d)} \
-    ${@bb.utils.contains('COMBINED_FEATURES', 'optee', 'packagegroup-optee-test', '', d)} \
+    myd-ya157c \    
     \
-    ${@bb.utils.contains('COMBINED_FEATURES', 'tpm2', 'packagegroup-security-tpm2', '', d)} \
-    \
-    packagegroup-st-demo \
+    udev-rules-st \
     \
     miraclecast \
     "

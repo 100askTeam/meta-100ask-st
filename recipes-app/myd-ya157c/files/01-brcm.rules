@@ -1,0 +1,1 @@
+SUBSYSTEM=="module", ACTION=="add", RUN+="/sbin/insmod /usr/share/100ask/bcmdhd.ko"

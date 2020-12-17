@@ -10,8 +10,7 @@ NO_GENERIC_LICENSE[Firmware-cypress-bcm4343] = "LICENCE.cypress"
 inherit allarch
 
 SRC_URI = "git://e.coding.net/lichang70/linux-fw-myir.git;protocol=https"
-#SRCREV = "75128b316d25db25ea6dcf96d6c0e313a7f483d0"
-SRCREV = "45a981bc2a9b6c21fd77a2704e7f593200a7828e"
+SRCREV = "af80435008560c0c85baa73dcd80fa688bd2941a"
 
 
 S = "${WORKDIR}/git"
@@ -24,13 +23,12 @@ do_install() {
 
     install -m 644 ${S}/BCM4343B0.hcd ${D}${nonarch_base_libdir}/firmware/brcm/BCM.hcd
     install -m 644 ${S}/LICENCE.cypress ${D}${nonarch_base_libdir}/firmware/LICENCE.cypress_bcm4343
-  
 #Used for wifi (sdio wifi and usb wifi)
    install -m 0644 ${S}/fw_bcm43436b0.bin ${D}${nonarch_base_libdir}/firmware/
    install -m 0644 ${S}/nvram_ap6236.txt  ${D}${nonarch_base_libdir}/firmware/
- 
    install -m 0644 ${S}/rtl8192cufw_TMSC.bin ${D}${nonarch_base_libdir}/firmware/rtlwifi/
    install -m 0644 ${S}/rtl8192cufw.bin ${D}${nonarch_base_libdir}/firmware/rtlwifi/
+   install -m 0644 ${S}/bcmdhd ${D}${nonarch_base_libdir}/firmware/brcm/
 }
 
 

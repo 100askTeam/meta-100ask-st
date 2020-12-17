@@ -18,12 +18,12 @@ BBCLASSEXTEND = "devupstream:target"
 
 
 SRC_URI += " \
-        git://e.coding.net/weidongshan/stm32mp15xc-kernel/stm32mp15xc-kernel.git;protocol=https;branch=master"
+        git://github.com/100askTeam/st-linux.git;protocol=https;branch=v5.4-stm32mp"
 
 # ---------------------------------
 # Add bluetooth
 # ---------------------------------
-SRCREV = "88e22aae19231ac4e3603578756c9d97ae134ef5"
+SRCREV = "a481230b58a10b4d2583eb5d45e3feb304e1ab28"
 
 #SRCREV_FORMAT = "linux"
 
@@ -48,9 +48,8 @@ STM32MP_SOURCE_SELECTION ?= "tarball"
 #
 
 KERNEL_DEFCONFIG        = "100ask_stm32mp157_defconfig"
-KERNEL_CONFIG_FRAGMENTS = "${@bb.utils.contains('KERNEL_DEFCONFIG', 'myc-ya157c_defconfig', '${S}/arch/arm/configs/fragment-01-multiv7_cleanup.config', '', d)}"
-KERNEL_CONFIG_FRAGMENTS += "${@bb.utils.contains('KERNEL_DEFCONFIG', 'myc-ya157c_defconfig', '${S}/arch/arm/configs/fragment-02-multiv7_addons.config', '', d)}"
-#KERNEL_CONFIG_FRAGMENTS += "${@bb.utils.contains('KERNEL_DEFCONFIG', 'myc-ya157c_defconfig', '${WORKDIR}/fragment.config', '', d)}"
+KERNEL_CONFIG_FRAGMENTS = "${@bb.utils.contains('KERNEL_DEFCONFIG', '100ask_stm32mp157_defconfig', '${S}/arch/arm/configs/fragment-01-multiv7_cleanup.config', '', d)}"
+KERNEL_CONFIG_FRAGMENTS += "${@bb.utils.contains('KERNEL_DEFCONFIG', '100ask_stm32mp157_defconfig', '${S}/arch/arm/configs/fragment-02-multiv7_addons.config', '', d)}"
 
 
 # -------------------------------------------------------------

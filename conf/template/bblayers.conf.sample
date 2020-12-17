@@ -52,6 +52,9 @@ ADDONSLAYERS += "${@'${OEROOT}/layers/meta-openembedded/meta-networking' if os.p
 # Qt5
 ADDONSLAYERS += "${@'${OEROOT}/layers/meta-qt5' if os.path.isfile('${OEROOT}/layers/meta-qt5/conf/layer.conf') else ''}"
 
+#Miracast
+ADDONSLAYERS += "${@'${OEROOT}/layers/meta-miracast' if os.path.isfile('${OEROOT}/layers/meta-miracast/conf/layer.conf') else ''}"
+
 
 # Security layer
 ADDONSLAYERS += " \

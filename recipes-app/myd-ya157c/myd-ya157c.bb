@@ -13,15 +13,21 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = " \ 
 	file://emmc_mount.sh \
 	file://myd-ya157c.service \ 
+	file://01-brcm.rules \
+	file://bcmdhd \
         "
 S_G = "${WORKDIR}"
 
 
 do_install () {
-      install -d ${D}/lib/systemd/system/
-      install -d ${D}/usr/bin/
-      install -m 0644 ${S_G}/myd-ya157c.service ${D}/lib/systemd/system/
-      install -m 0777 ${S_G}/*.sh ${D}/usr/bin/
+    install -d ${D}/lib/systemd/system/
+    install -d ${D}/usr/bin/
+    install -m 0644 ${S_G}/myd-ya157c.service ${D}/lib/systemd/system/
+    install -m 0777 ${S_G}/*.sh ${D}/usr/bin/
+    install -d ${D}${sysconfdir}/udev/rules.d/
+    install -m 0644 ${WORKDIR}/01-brcm.rules ${D}${sysconfdir}/udev/rules.d/
+    install -d ${D}${nonarch_base_libdir}/firmware/brcm/
+    install -m 644 ${WORKDIR}//bcmdhd ${D}${nonarch_base_libdir}/firmware/brcm/bcmdhd.ko
       
 }
 
